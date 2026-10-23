@@ -1,0 +1,17 @@
+.card-container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.heading-container,
+.question-container {
+    width: 500px;
+}
+
+.heading-container {
+    text-align: left;
+    margin-bottom: 20px;
+}
