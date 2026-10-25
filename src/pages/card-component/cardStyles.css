@@ -1,17 +1,124 @@
-.card-container {
-    height: 100vh;
+/* Reset and Container Layout */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f0f2f5;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
+    min-height: 100vh;
 }
 
-.heading-container,
-.question-container {
-    width: 500px;
+/* Card Wrapper */
+.card-container {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
+/* Header Section (Question ID & Score) */
 .heading-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #eaeaea;
+    padding-bottom: 15px;
+}
+
+.heading-container h1 {
+    font-size: 1.25rem;
+    color: #333333;
+}
+
+.heading-container h2 {
+    font-size: 0.95rem;
+    color: #555555;
+    background: #f8f9fa;
+    padding: 6px 12px;
+    border-radius: 20px;
+    border: 1px solid #e1e4e8;
+}
+
+/* Question & Options */
+.question-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.question-container h2 {
+    font-size: 1.15rem;
+    color: #2c3e50;
+    line-height: 1.4;
+}
+
+.question-container ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.question-container li button {
+    width: 100%;
+    padding: 12px 16px;
+    font-size: 1rem;
+    font-weight: 500;
     text-align: left;
-    margin-bottom: 20px;
+    background-color: #ffffff;
+    border: 2px solid #e1e4e8;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    color: #333333;
+}
+
+.question-container li button:hover:not(:disabled) {
+    background-color: #f1f3f5;
+    border-color: #cbd5e1;
+}
+
+.question-container li button:disabled {
+    cursor: not-allowed;
+    opacity: 0.9;
+}
+
+/* Feedback Paragraph (Wrong Answer Indicator) */
+p {
+    font-size: 0.95rem;
+    color: #e74c3c;
+    font-weight: 600;
+    background: #fde8e8;
+    padding: 10px 14px;
+    border-radius: 6px;
+    border-left: 4px solid #e74c3c;
+}
+
+/* Action Buttons ("Next Question" & "Show Result") */
+.card-container > button {
+    padding: 12px 20px;
+    font-size: 1rem;
+    font-weight: 600;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    text-align: center;
+}
+
+.card-container > button:hover {
+    background-color: #2980b9;
 }

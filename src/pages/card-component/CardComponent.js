@@ -7,6 +7,8 @@ export default function CardComponent() {
 
     const [selectedAnswer, setSelectedAnswer] = useState(null);
 
+    const [score, setScore] = useState(0);
+
     function nextQuestionClickHandler() {
         if (currentIndex === QUIZ_JSON.questions.length - 1) return;
         setCurrentIndex((prevIndex) => prevIndex + 1);
@@ -16,12 +18,15 @@ export default function CardComponent() {
     function answerClickHandler(optionText) {
         if (selectedAnswer !== null) return;
         setSelectedAnswer(optionText);
+        optionText === QUIZ_JSON.questions[currentIndex].answer &&
+            setScore((prevScore) => prevScore + 1);
     }
 
     return (
         <div className="card-container">
             <div className="heading-container">
-                <h1>Question 1</h1>
+                <h1>Question {QUIZ_JSON.questions[currentIndex].id}</h1>
+                <h2>Score: {score}</h2>
             </div>
             <div className="question-container">
                 <h2>{QUIZ_JSON.questions[currentIndex].question}</h2>
@@ -62,10 +67,25 @@ export default function CardComponent() {
                     )}
                 </ul>
             </div>
+
             {selectedAnswer !== null && (
-                <button onClick={nextQuestionClickHandler}>
-                    Next Question
-                </button>
+                <>
+                    {selectedAnswer !==
+                        QUIZ_JSON.questions[currentIndex].answer && (
+                        <p>
+                            Correct Answer was{" "}
+                            {QUIZ_JSON.questions[currentIndex].answer}
+                        </p>
+                    )}
+
+                    <button onClick={nextQuestionClickHandler}>
+                        Next Question
+                    </button>
+                </>
+            )}
+
+            {currentIndex === QUIZ_JSON.questions.length - 1 && (
+                <button>Show Result</button>
             )}
         </div>
     );
