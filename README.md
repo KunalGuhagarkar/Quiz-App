@@ -1,70 +1,119 @@
-# Getting Started with Create React App
+# Quiz App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A browser-based General Knowledge quiz built with React. It presents multiple-choice questions one at a time, gives instant feedback on each answer, and shows your final score at the end.
+
+This project is based on the [Quiz App project](https://roadmap.sh/projects/quiz-app) from [roadmap.sh](https://roadmap.sh/).
+
+## Features
+
+- **Start screen** with instructions and a "Start Test" button
+- **Question cards**: one question at a time, with the answer options shown as buttons
+- **Instant feedback**: the option you pick turns green if it's correct or red if it's wrong, and the correct answer is shown when you get it wrong
+- **Live score** displayed on every question
+- **Locked answers**: once you pick an answer you can't change it
+- **Result screen** with your score out of the total, your percentage, and a feedback message based on how well you did
+- **Try Again** button to restart the quiz
+- **JSON-driven questions**: the quiz content lives in `src/data/quiz.json`, so it's easy to edit or replace
+
+## Tech Stack
+
+- [React](https://react.dev/) 19 (hooks for state management)
+- [Create React App](https://create-react-app.dev/) (`react-scripts` 5.0.1)
+- Plain CSS, with a stylesheet per page component
+- [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/) and Jest for testing
+
+## Prerequisites
+
+- [Node.js](https://nodejs.org/) 18 or later
+- npm (included with Node.js)
+
+## Getting Started
+
+1. **Clone the repository**
+
+   ```bash
+   git clone https://github.com/KunalGuhagarkar/Quiz-App.git
+   cd Quiz-App
+   ```
+
+2. **Install dependencies**
+
+   ```bash
+   npm install
+   ```
+
+3. **Start the development server**
+
+   ```bash
+   npm start
+   ```
+
+   The app runs at [http://localhost:3000](http://localhost:3000) and reloads automatically when you edit a file.
 
 ## Available Scripts
 
-In the project directory, you can run:
+| Command | Description |
+| --- | --- |
+| `npm start` | Runs the app in development mode on port 3000. |
+| `npm test` | Launches the test runner in interactive watch mode. |
+| `npm run build` | Creates an optimized production build in the `build` folder. |
+| `npm run eject` | Ejects from Create React App. **This is a one-way operation.** |
 
-### `npm start`
+## Project Structure
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+```
+Quiz-App/
+├── public/
+│   ├── index.html
+│   └── manifest.json
+├── src/
+│   ├── data/
+│   │   └── quiz.json                  # Quiz title and questions
+│   ├── pages/
+│   │   ├── start-component/           # Welcome screen and instructions
+│   │   ├── card-component/            # Question card, answers and score
+│   │   └── result-component/          # Final score and feedback
+│   ├── App.js                         # Switches between start, quiz and result screens
+│   ├── App.css
+│   ├── index.js
+│   └── index.css
+├── package.json
+└── README.md
+```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Customizing the Quiz
 
-### `npm test`
+All questions are stored in `src/data/quiz.json`. Add, remove or edit entries in the `questions` array. Each question has this shape:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```json
+{
+  "id": 1,
+  "question": "What planet is known as a red planet?",
+  "options": ["Earth", "Mars", "Venus", "Mercury"],
+  "answer": "Mars"
+}
+```
 
-### `npm run build`
+The `answer` value must exactly match one of the strings in `options`. The result screen picks up the new question count automatically.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Building for Production
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```bash
+npm run build
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+The optimized, minified output is written to the `build` folder and is ready to deploy to any static hosting service (Netlify, Vercel, GitHub Pages, etc.). See the [Create React App deployment guide](https://create-react-app.dev/docs/deployment/) for platform-specific steps.
 
-### `npm run eject`
+## Contributing
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Contributions are welcome.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/your-feature`)
+3. Commit your changes (`git commit -m "Add your feature"`)
+4. Push to the branch (`git push origin feature/your-feature`)
+5. Open a pull request
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Author
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+**Kunal Guhagarkar** - [@KunalGuhagarkar](https://github.com/KunalGuhagarkar)
