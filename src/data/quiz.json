@@ -1,0 +1,17 @@
+{
+    "quiz": "General Knowledge Quiz",
+    "questions": [
+        {
+            "id": 1,
+            "question": "What planet is known as a red planet?",
+            "options": ["Earth", "Mars", "Venus", "Mercury"],
+            "answer": "Mars"
+        },
+        {
+            "id": 2,
+            "question": "What is the capital of France?",
+            "options": ["London", "Berlin", "Paris", "Madrid"],
+            "answer": "Paris"
+        }
+    ]
+}
