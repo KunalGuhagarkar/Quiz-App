@@ -12,6 +12,54 @@
             "question": "What is the capital of France?",
             "options": ["London", "Berlin", "Paris", "Madrid"],
             "answer": "Paris"
+        },
+        {
+            "id": 3,
+            "question": "Which chemical element has the symbol 'O'?",
+            "options": ["Gold", "Oxygen", "Osmium", "Silver"],
+            "answer": "Oxygen"
+        },
+        {
+            "id": 4,
+            "question": "What is the largest ocean on Earth?",
+            "options": ["Atlantic Ocean", "Indian Ocean", "Arctic Ocean", "Pacific Ocean"],
+            "answer": "Pacific Ocean"
+        },
+        {
+            "id": 5,
+            "question": "Who painted the Mona Lisa?",
+            "options": ["Vincent van Gogh", "Leonardo da Vinci", "Pablo Picasso", "Claude Monet"],
+            "answer": "Leonardo da Vinci"
+        },
+        {
+            "id": 6,
+            "question": "Which organ in the human body pumps blood?",
+            "options": ["Brain", "Lungs", "Heart", "Liver"],
+            "answer": "Heart"
+        },
+        {
+            "id": 7,
+            "question": "What is the hardest natural substance on Earth?",
+            "options": ["Gold", "Iron", "Diamond", "Platinum"],
+            "answer": "Diamond"
+        },
+        {
+            "id": 8,
+            "question": "Which country is home to the kangaroo?",
+            "options": ["South Africa", "Australia", "Brazil", "India"],
+            "answer": "Australia"
+        },
+        {
+            "id": 9,
+            "question": "How many continents are there on Earth?",
+            "options": ["5", "6", "7", "8"],
+            "answer": "7"
+        },
+        {
+            "id": 10,
+            "question": "What primary color do you get when you mix red and yellow?",
+            "options": ["Green", "Purple", "Orange", "Brown"],
+            "answer": "Orange"
         }
     ]
 }

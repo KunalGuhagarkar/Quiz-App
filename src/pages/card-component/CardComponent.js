@@ -2,7 +2,7 @@ import { useState } from "react";
 import "./cardStyles.css";
 import QUIZ_JSON from "../../data/quiz.json";
 
-export default function CardComponent() {
+export default function CardComponent({ onResult, setFinalScore }) {
     const [currentIndex, setCurrentIndex] = useState(0);
 
     const [selectedAnswer, setSelectedAnswer] = useState(null);
@@ -18,8 +18,12 @@ export default function CardComponent() {
     function answerClickHandler(optionText) {
         if (selectedAnswer !== null) return;
         setSelectedAnswer(optionText);
-        optionText === QUIZ_JSON.questions[currentIndex].answer &&
-            setScore((prevScore) => prevScore + 1);
+        if (optionText === QUIZ_JSON.questions[currentIndex].answer) {
+            const nextScore = score + 1;
+
+            setScore(nextScore);
+            setFinalScore(nextScore);
+        }
     }
 
     return (
@@ -85,7 +89,7 @@ export default function CardComponent() {
             )}
 
             {currentIndex === QUIZ_JSON.questions.length - 1 && (
-                <button>Show Result</button>
+                <button onClick={onResult}>Show Result</button>
             )}
         </div>
     );
