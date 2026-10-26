@@ -10,6 +10,7 @@ This project is based on the [Quiz App project](https://roadmap.sh/projects/quiz
 - **Question cards**: one question at a time, with the answer options shown as buttons
 - **Instant feedback**: the option you pick turns green if it's correct or red if it's wrong, and the correct answer is shown when you get it wrong
 - **Live score** displayed on every question
+- **Question timer**: a timer counts up on each question, and if you don't answer within 10 seconds the quiz moves on automatically (on the last question it goes to the result)
 - **Locked answers**: once you pick an answer you can't change it
 - **Result screen** with your score out of the total, your percentage, and a feedback message based on how well you did
 - **Try Again** button to restart the quiz
@@ -71,7 +72,7 @@ Quiz-App/
 │   │   └── quiz.json                  # Quiz title and questions
 │   ├── pages/
 │   │   ├── start-component/           # Welcome screen and instructions
-│   │   ├── card-component/            # Question card, answers and score
+│   │   ├── card-component/            # Question card, answers, score and timer
 │   │   └── result-component/          # Final score and feedback
 │   ├── App.js                         # Switches between start, quiz and result screens
 │   ├── App.css
