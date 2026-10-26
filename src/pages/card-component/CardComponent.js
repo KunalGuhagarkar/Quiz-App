@@ -108,13 +108,11 @@ export default function CardComponent({ onResult, setFinalScore }) {
                     )}
 
                     <button onClick={nextQuestionClickHandler}>
-                        Next Question
+                        {currentIndex === QUIZ_JSON.questions.length - 1
+                            ? "Show Result"
+                            : "Next Question"}
                     </button>
                 </>
-            )}
-
-            {currentIndex === QUIZ_JSON.questions.length - 1 && (
-                <button onClick={onResult}>Show Result</button>
             )}
         </div>
     );
