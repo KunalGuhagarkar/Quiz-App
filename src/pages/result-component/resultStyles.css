@@ -95,3 +95,80 @@
         transform: translateY(0);
     }
 }
+
+/* Container for the questions list */
+.result-container {
+    width: 100%;
+    max-height: 250px; /* Optional: adds scrolling if there are many questions */
+    overflow-y: auto;
+    margin-top: 10px;
+    padding-right: 6px; /* Spacing for custom scrollbar */
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    text-align: left;
+}
+
+/* Individual question review card */
+.result-container > div {
+    background-color: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 14px 16px;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.result-container > div:hover {
+    border-color: #cbd5e1;
+    transform: translateY(-1px);
+}
+
+/* Question ID Title */
+.result-container h3 {
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #6366f1;
+    margin-bottom: 4px;
+}
+
+/* Question text */
+.result-container p:nth-of-type(1) {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #1e293b;
+    margin-bottom: 8px;
+    line-height: 1.4;
+}
+
+/* Correct Answer text */
+.result-container p:nth-of-type(2) {
+    font-size: 0.875rem;
+    color: #059669;
+    background-color: #ecfdf5;
+    border: 1px solid #a7f3d0;
+    padding: 6px 10px;
+    border-radius: 6px;
+    display: inline-block;
+    font-weight: 500;
+}
+
+/* Custom Scrollbar for result-container */
+.result-container::-webkit-scrollbar {
+    width: 6px;
+}
+
+.result-container::-webkit-scrollbar-track {
+    background: #f1f5f9;
+    border-radius: 4px;
+}
+
+.result-container::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 4px;
+}
+
+.result-container::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+}
