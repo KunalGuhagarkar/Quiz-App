@@ -1,12 +1,18 @@
 {
-  "title": "JavaScript Basics",
-  "description": "10 questions to test your JS knowledge.",
-  "questions": [
-    {
-      "id": 1,
-      "question": "What does typeof null return?",
-      "options": ["null", "object", "undefined", "number"],
-      "correctIndex": 1
-    }
-  ]
+    "title": "JavaScript Basics",
+    "description": "10 questions to test your JS knowledge.",
+    "questions": [
+        {
+            "id": 1,
+            "question": "What does typeof null return?",
+            "options": ["null", "object", "undefined", "number"],
+            "correctIndex": 1
+        },
+        {
+            "id": 2,
+            "question": "What does Oink null return?",
+            "options": ["null", "object", "undefined", "number"],
+            "correctIndex": 1
+        }
+    ]
 }
