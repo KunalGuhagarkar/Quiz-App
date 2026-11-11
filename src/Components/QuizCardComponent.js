@@ -2,14 +2,17 @@ import { useState } from "react";
 
 import QUESTIONS from "../data/questions.json";
 
-export default function QuizCardComponent() {
+export default function QuizCardComponent({ showResult, resultScore }) {
     const [currentQuestion, setCurrentQuestion] = useState(0);
+    const [score, setScore] = useState(0);
 
     function optionClickHandler(optionIndex, correctIndex, event) {
         event.target.style.backgroundColor =
             optionIndex === correctIndex ? "lightgreen" : "red";
 
-        const buttons = document.querySelectorAll("button");
+        optionIndex === correctIndex && setScore((prevScore) => prevScore + 1);
+
+        const buttons = document.querySelectorAll(".options-btn");
 
         if (optionIndex !== correctIndex) {
             buttons[correctIndex].style.backgroundColor = "lightgreen";
@@ -30,6 +33,7 @@ export default function QuizCardComponent() {
                             return (
                                 <li key={index}>
                                     <button
+                                        className="options-btn"
                                         onClick={(event) =>
                                             optionClickHandler(
                                                 index,
@@ -48,9 +52,21 @@ export default function QuizCardComponent() {
                     )}
                 </ul>
             </div>
-            <button onClick={() => setCurrentQuestion((prev) => prev + 1)}>
-                Next Question
-            </button>
+
+            {QUESTIONS.questions.length - 1 === currentQuestion ? (
+                <button
+                    onClick={() => {
+                        showResult(true);
+                        resultScore(score);
+                    }}
+                >
+                    Show Result
+                </button>
+            ) : (
+                <button onClick={() => setCurrentQuestion((prev) => prev + 1)}>
+                    Next Question
+                </button>
+            )}
         </div>
     );
 }
