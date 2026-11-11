@@ -9,8 +9,6 @@ export default function App() {
     const [showResult, setShowResult] = useState(false);
     const [resultScore, setResultScore] = useState(0);
 
-    console.log(resultScore);
-
     return (
         <>
             {!quizStart ? (
