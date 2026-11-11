@@ -1,6 +1,15 @@
 {
     "title": "JavaScript Basics",
     "description": "10 questions to test your JS knowledge.",
+    "instructions": [
+        "This quiz has 10 multiple-choice questions.",
+        "Each question has exactly one correct answer.",
+        "Choose the option that best answers the question.",
+        "Each correct answer is worth 1 point, for a maximum of 10 points.",
+        "There is no negative marking, so attempt every question.",
+        "There is no time limit. Take your time and answer without looking anything up.",
+        "Your score is shown at the end of the quiz."
+    ],
     "questions": [
         {
             "id": 1,
@@ -10,9 +19,62 @@
         },
         {
             "id": 2,
-            "question": "What does Oink null return?",
+            "question": "What does typeof undefined return?",
             "options": ["null", "object", "undefined", "number"],
+            "correctIndex": 2
+        },
+        {
+            "id": 3,
+            "question": "Which keyword declares a block-scoped variable that can be reassigned?",
+            "options": ["var", "let", "const", "static"],
             "correctIndex": 1
+        },
+        {
+            "id": 4,
+            "question": "What does 2 + \"2\" return?",
+            "options": ["4", "22", "NaN", "Error"],
+            "correctIndex": 1
+        },
+        {
+            "id": 5,
+            "question": "Which array method adds an element to the end of an array?",
+            "options": ["push()", "pop()", "shift()", "unshift()"],
+            "correctIndex": 0
+        },
+        {
+            "id": 6,
+            "question": "What does 5 === \"5\" return?",
+            "options": ["true", "false", "undefined", "TypeError"],
+            "correctIndex": 1
+        },
+        {
+            "id": 7,
+            "question": "Which of these is NOT a primitive type in JavaScript?",
+            "options": ["string", "boolean", "object", "symbol"],
+            "correctIndex": 2
+        },
+        {
+            "id": 8,
+            "question": "What does Array.isArray([]) return?",
+            "options": ["true", "false", "undefined", "null"],
+            "correctIndex": 0
+        },
+        {
+            "id": 9,
+            "question": "What does NaN === NaN return?",
+            "options": ["true", "false", "undefined", "NaN"],
+            "correctIndex": 1
+        },
+        {
+            "id": 10,
+            "question": "Which function converts a string to an integer?",
+            "options": [
+                "parseInt()",
+                "toString()",
+                "parseText()",
+                "Number.parse()"
+            ],
+            "correctIndex": 0
         }
     ]
 }
