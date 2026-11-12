@@ -1,0 +1,121 @@
+.quiz-card {
+    --bg: #f4f6fb;
+    --card: #ffffff;
+    --text: #1f2937;
+    --muted: #6b7280;
+    --primary: #4f46e5;
+    --primary-dark: #4338ca;
+    --border: #e5e7eb;
+
+    max-width: 640px;
+    margin: 40px auto;
+    padding: 28px 28px 24px;
+    background: var(--card);
+    color: var(--text);
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(31, 41, 55, 0.12);
+    font-family:
+        "Segoe UI",
+        system-ui,
+        -apple-system,
+        Roboto,
+        sans-serif;
+}
+
+/* Question */
+.quiz-card h3 {
+    margin: 0 0 8px;
+    font-size: 1.35rem;
+    line-height: 1.4;
+}
+
+/* Timer */
+.quiz-card p {
+    display: inline-block;
+    margin: 0 0 18px;
+    padding: 4px 12px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--primary);
+    background: #eef2ff;
+    border-radius: 999px;
+}
+
+/* Options list */
+.quiz-card ul {
+    list-style: none;
+    margin: 0 0 22px;
+    padding: 0;
+    display: grid;
+    gap: 12px;
+}
+
+/* Option buttons */
+.options-btn {
+    width: 100%;
+    padding: 14px 16px;
+    text-align: left;
+    font-size: 1rem;
+    color: var(--text);
+    background: #fff;
+    border: 2px solid var(--border);
+    border-radius: 10px;
+    cursor: pointer;
+    transition:
+        border-color 0.15s,
+        transform 0.1s,
+        box-shadow 0.15s;
+}
+
+.options-btn:hover:not(:disabled) {
+    border-color: var(--primary);
+    box-shadow: 0 2px 8px rgba(79, 70, 229, 0.18);
+    transform: translateY(-1px);
+}
+
+.options-btn:active:not(:disabled) {
+    transform: translateY(0);
+}
+
+.options-btn:disabled {
+    cursor: not-allowed;
+    color: var(--text);
+    opacity: 1; /* keep the green/red inline colors fully visible */
+}
+
+/* Next / Show Result button (the direct button child of the card) */
+.quiz-card > button {
+    display: block;
+    margin-left: auto;
+    padding: 12px 24px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #fff;
+    background: var(--primary);
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition:
+        background 0.15s,
+        transform 0.1s;
+}
+
+.quiz-card > button:hover {
+    background: var(--primary-dark);
+}
+
+.quiz-card > button:active {
+    transform: scale(0.97);
+}
+
+/* Mobile */
+@media (max-width: 520px) {
+    .quiz-card {
+        margin: 16px;
+        padding: 20px 16px;
+    }
+
+    .quiz-card h3 {
+        font-size: 1.15rem;
+    }
+}

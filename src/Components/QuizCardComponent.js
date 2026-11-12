@@ -1,10 +1,13 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+
+import "../Styles/quizcardStyle.css";
 
 import QUESTIONS from "../data/questions.json";
 
 export default function QuizCardComponent({ showResult, resultScore }) {
     const [currentQuestion, setCurrentQuestion] = useState(0);
     const [score, setScore] = useState(0);
+    const [seconds, setSeconds] = useState(10);
 
     function optionClickHandler(optionIndex, correctIndex, event) {
         event.target.style.backgroundColor =
@@ -23,10 +26,30 @@ export default function QuizCardComponent({ showResult, resultScore }) {
         });
     }
 
+    useEffect(() => {
+        let count = 30;
+        setSeconds(count);
+        let timer = setInterval(() => {
+            count--;
+            setSeconds(() => count);
+            if (count === 0) {
+                setCurrentQuestion((prev) => prev + 1);
+                if (QUESTIONS.questions.length - 1 === currentQuestion) {
+                    showResult(true);
+                    resultScore(score);
+                }
+                clearInterval(timer);
+            }
+        }, 1000);
+
+        return () => clearInterval(timer);
+    }, [currentQuestion]);
+
     return (
-        <div>
+        <div className="quiz-card">
             <div key={QUESTIONS.questions[currentQuestion].id}>
                 <h3>{QUESTIONS.questions[currentQuestion].question}</h3>
+                <p>Timer: {seconds}</p>
                 <ul>
                     {QUESTIONS.questions[currentQuestion].options.map(
                         (option, index) => {
