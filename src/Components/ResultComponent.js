@@ -1,8 +1,10 @@
 import QUESTIONS from "../data/questions.json";
 
+import "../Styles/resultStyle.css";
+
 export default function ResultComponent({ resultScore }) {
     return (
-        <div>
+        <div className="result-card">
             <h1>Your Score is {resultScore}</h1>
 
             {QUESTIONS.questions.map((question, index) => {

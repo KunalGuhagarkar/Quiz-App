@@ -1,0 +1,92 @@
+.result-card {
+    --card: #ffffff;
+    --text: #1f2937;
+    --muted: #6b7280;
+    --primary: #4f46e5;
+    --success: #16a34a;
+    --success-bg: #dcfce7;
+    --border: #e5e7eb;
+
+    max-width: 640px;
+    margin: 40px auto;
+    padding: 28px;
+    background: var(--card);
+    color: var(--text);
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(31, 41, 55, 0.12);
+    font-family:
+        "Segoe UI",
+        system-ui,
+        -apple-system,
+        Roboto,
+        sans-serif;
+}
+
+/* Score heading */
+.result-card h1 {
+    margin: 0 0 24px;
+    padding: 20px;
+    text-align: center;
+    font-size: 1.8rem;
+    color: #fff;
+    background: linear-gradient(135deg, #6366f1, #4f46e5);
+    border-radius: 12px;
+}
+
+/* Each question block */
+.result-card > div {
+    padding: 18px 0;
+    border-top: 1px solid var(--border);
+}
+
+.result-card > div:first-of-type {
+    border-top: none;
+}
+
+/* Question text */
+.result-card h3 {
+    margin: 0 0 12px;
+    font-size: 1.1rem;
+    line-height: 1.4;
+}
+
+/* Options list */
+.result-card ul {
+    list-style: none;
+    margin: 0 0 12px;
+    padding: 0;
+    display: grid;
+    gap: 8px;
+}
+
+.result-card li {
+    padding: 10px 14px;
+    font-size: 0.95rem;
+    color: var(--muted);
+    background: #f9fafb;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+}
+
+/* Correct answer line */
+.result-card h4 {
+    margin: 0;
+    padding: 10px 14px;
+    font-size: 0.95rem;
+    color: var(--success);
+    background: var(--success-bg);
+    border-left: 4px solid var(--success);
+    border-radius: 6px;
+}
+
+/* Mobile */
+@media (max-width: 520px) {
+    .result-card {
+        margin: 16px;
+        padding: 18px 14px;
+    }
+
+    .result-card h1 {
+        font-size: 1.4rem;
+    }
+}
