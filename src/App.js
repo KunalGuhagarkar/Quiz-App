@@ -14,7 +14,10 @@ export default function App() {
             {!quizStart ? (
                 <StartQuizComponent startQuiz={setQuizStart} />
             ) : !showResult ? (
-                <QuizCardComponent showResult={setShowResult} resultScore={setResultScore} />
+                <QuizCardComponent
+                    showResult={setShowResult}
+                    resultScore={setResultScore}
+                />
             ) : (
                 <ResultComponent resultScore={resultScore} />
             )}
