@@ -5,7 +5,9 @@ import "../Styles/resultStyle.css";
 export default function ResultComponent({ resultScore }) {
     return (
         <div className="result-card">
-            <h1>Your Score is {resultScore}</h1>
+            <h1>
+                Your Score is {resultScore}/{QUESTIONS.questions.length}
+            </h1>
 
             {QUESTIONS.questions.map((question, index) => {
                 return (

@@ -90,3 +90,39 @@
         font-size: 1.4rem;
     }
 }
+
+/* Try again button (sits below the result card) */
+.try-again-btn {
+    display: block;
+    margin: 0 auto 40px;
+    padding: 12px 36px;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: #ffffff;
+    background: #4f46e5;
+    border: none;
+    border-radius: 999px;
+    cursor: pointer;
+    transition:
+        background 0.2s ease,
+        transform 0.1s ease;
+}
+
+.try-again-btn:hover {
+    background: #4338ca;
+}
+
+.try-again-btn:active {
+    transform: scale(0.97);
+}
+
+.try-again-btn:focus-visible {
+    outline: 3px solid #a5b4fc;
+    outline-offset: 2px;
+}
+
+@media (max-width: 520px) {
+    .try-again-btn {
+        width: calc(100% - 32px);
+    }
+}

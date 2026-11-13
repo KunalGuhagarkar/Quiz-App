@@ -7,8 +7,7 @@ import QUESTIONS from "../data/questions.json";
 export default function QuizCardComponent({ showResult, resultScore }) {
     const [currentQuestion, setCurrentQuestion] = useState(0);
     const [score, setScore] = useState(0);
-
-    const [seconds, setSeconds] = useState(10);
+    const [seconds, setSeconds] = useState(30);
 
     function optionClickHandler(optionIndex, correctIndex, event) {
         event.target.style.backgroundColor =
@@ -16,6 +15,7 @@ export default function QuizCardComponent({ showResult, resultScore }) {
 
         optionIndex === correctIndex && setScore((prevScore) => prevScore + 1);
 
+        // fix this (this bypasses react) solution: use selected option state
         const buttons = document.querySelectorAll(".options-btn");
 
         if (optionIndex !== correctIndex) {
@@ -28,7 +28,7 @@ export default function QuizCardComponent({ showResult, resultScore }) {
     }
 
     useEffect(() => {
-        let count = 10;
+        let count = 30;
         setSeconds(count);
 
         let timer = setInterval(() => {
@@ -47,7 +47,7 @@ export default function QuizCardComponent({ showResult, resultScore }) {
             resultScore(score);
         } else {
             setCurrentQuestion((prevQuestion) => prevQuestion + 1);
-            setSeconds(10);
+            setSeconds(30);
         }
     }, [seconds, currentQuestion, resultScore, score, showResult]);
 

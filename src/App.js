@@ -9,6 +9,12 @@ export default function App() {
     const [showResult, setShowResult] = useState(false);
     const [resultScore, setResultScore] = useState(0);
 
+    function resetQuizClickHandler() {
+        setQuizStart(false);
+        setShowResult(false);
+        setResultScore(0);
+    }
+
     return (
         <>
             {!quizStart ? (
@@ -19,7 +25,10 @@ export default function App() {
                     resultScore={setResultScore}
                 />
             ) : (
-                <ResultComponent resultScore={resultScore} />
+                <>
+                    <ResultComponent resultScore={resultScore} />
+                    <button className="try-again-btn" onClick={resetQuizClickHandler}>Try again</button>
+                </>
             )}
         </>
     );
