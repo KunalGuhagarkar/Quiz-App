@@ -7,6 +7,7 @@ import QUESTIONS from "../data/questions.json";
 export default function QuizCardComponent({ showResult, resultScore }) {
     const [currentQuestion, setCurrentQuestion] = useState(0);
     const [score, setScore] = useState(0);
+
     const [seconds, setSeconds] = useState(10);
 
     function optionClickHandler(optionIndex, correctIndex, event) {
@@ -27,29 +28,35 @@ export default function QuizCardComponent({ showResult, resultScore }) {
     }
 
     useEffect(() => {
-        let count = 30;
+        let count = 10;
         setSeconds(count);
+
         let timer = setInterval(() => {
             count--;
             setSeconds(() => count);
-            if (count === 0) {
-                setCurrentQuestion((prev) => prev + 1);
-                if (QUESTIONS.questions.length - 1 === currentQuestion) {
-                    showResult(true);
-                    resultScore(score);
-                }
-                clearInterval(timer);
-            }
+            if (count === 0) clearInterval(timer);
         }, 1000);
 
         return () => clearInterval(timer);
     }, [currentQuestion]);
+
+    useEffect(() => {
+        if (seconds !== 0) return;
+        if (QUESTIONS.questions.length - 1 === currentQuestion) {
+            showResult(true);
+            resultScore(score);
+        } else {
+            setCurrentQuestion((prevQuestion) => prevQuestion + 1);
+            setSeconds(10);
+        }
+    }, [seconds, currentQuestion, resultScore, score, showResult]);
 
     return (
         <div className="quiz-card">
             <div key={QUESTIONS.questions[currentQuestion].id}>
                 <h3>{QUESTIONS.questions[currentQuestion].question}</h3>
                 <p>Timer: {seconds}</p>
+
                 <ul>
                     {QUESTIONS.questions[currentQuestion].options.map(
                         (option, index) => {
