@@ -27,7 +27,12 @@ export default function App() {
             ) : (
                 <>
                     <ResultComponent resultScore={resultScore} />
-                    <button className="try-again-btn" onClick={resetQuizClickHandler}>Try again</button>
+                    <button
+                        className="try-again-btn"
+                        onClick={resetQuizClickHandler}
+                    >
+                        Try again
+                    </button>
                 </>
             )}
         </>
