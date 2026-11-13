@@ -1,27 +1,26 @@
 # Quiz App
 
-A browser-based General Knowledge quiz built with React. It presents multiple-choice questions one at a time, gives instant feedback on each answer, and shows your final score at the end.
+A browser-based JavaScript quiz built with React. It shows multiple-choice questions one at a time, gives instant feedback on each answer, and shows your final score along with the correct answers at the end.
 
-This project is based on the [Quiz App project](https://roadmap.sh/projects/quiz-app) from [roadmap.sh](https://roadmap.sh/).
+Based on the [Quiz App project](https://roadmap.sh/projects/quiz-app) from [roadmap.sh](https://roadmap.sh/).
 
 ## Features
 
-- **Start screen** with instructions and a "Start Test" button
-- **Question cards**: one question at a time, with the answer options shown as buttons
-- **Instant feedback**: the option you pick turns green if it's correct or red if it's wrong, and the correct answer is shown when you get it wrong
-- **Live score** displayed on every question
-- **Question timer**: a timer counts up on each question, and if you don't answer within 10 seconds the quiz moves on automatically (on the last question it goes to the result)
-- **Locked answers**: once you pick an answer you can't change it
-- **Result screen** with your score out of the total, your percentage, and a feedback message based on how well you did
-- **Try Again** button to restart the quiz
-- **JSON-driven questions**: the quiz content lives in `src/data/quiz.json`, so it's easy to edit or replace
+- **Start screen** with the quiz title, description and instructions, plus a "Start Quiz" button
+- **One question at a time**, with the answer options shown as buttons
+- **Instant feedback**: the option you pick turns green if it's correct or red if it's wrong, and the correct answer is highlighted when you get it wrong
+- **Locked answers**: once you pick an option, all options are disabled
+- **Per-question countdown timer**: each question has a 10-second timer. When it reaches 0 the quiz moves to the next question automatically, or to the result screen on the last question
+- **Next Question / Show Result** buttons to move on without waiting for the timer
+- **Result screen** showing your score, plus every question with its options and the correct answer
+- **JSON-driven content**: the title, description, instructions and questions all live in `src/data/questions.json`
 
 ## Tech Stack
 
-- [React](https://react.dev/) 19 (hooks for state management)
+- [React](https://react.dev/) 19 (hooks: `useState`, `useEffect`)
 - [Create React App](https://create-react-app.dev/) (`react-scripts` 5.0.1)
-- Plain CSS, with a stylesheet per page component
-- [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/) and Jest for testing
+- Plain CSS, with one stylesheet per component
+- [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/) and Jest (set up via Create React App)
 
 ## Prerequisites
 
@@ -68,12 +67,16 @@ Quiz-App/
 │   ├── index.html
 │   └── manifest.json
 ├── src/
+│   ├── Components/
+│   │   ├── StartQuizComponent.js      # Welcome screen and instructions
+│   │   ├── QuizCardComponent.js       # Question card, answer feedback and timer
+│   │   └── ResultComponent.js         # Final score and answer review
+│   ├── Styles/
+│   │   ├── startquizStyle.css
+│   │   ├── quizcardStyle.css
+│   │   └── resultStyle.css
 │   ├── data/
-│   │   └── quiz.json                  # Quiz title and questions
-│   ├── pages/
-│   │   ├── start-component/           # Welcome screen and instructions
-│   │   ├── card-component/            # Question card, answers, score and timer
-│   │   └── result-component/          # Final score and feedback
+│   │   └── questions.json             # Quiz title, instructions and questions
 │   ├── App.js                         # Switches between start, quiz and result screens
 │   ├── App.css
 │   ├── index.js
@@ -82,20 +85,52 @@ Quiz-App/
 └── README.md
 ```
 
+## How It Works
+
+`App.js` holds three pieces of state and renders one screen at a time:
+
+1. **Start screen** (`StartQuizComponent`) until the user clicks "Start Quiz"
+2. **Quiz screen** (`QuizCardComponent`) until the quiz finishes, either through the "Show Result" button or when the timer runs out on the last question
+3. **Result screen** (`ResultComponent`), which receives the final score
+
+`QuizCardComponent` tracks the current question, the score and the remaining seconds. One effect restarts a 10-second countdown whenever the question changes. A second effect advances the quiz when the countdown reaches 0.
+
 ## Customizing the Quiz
 
-All questions are stored in `src/data/quiz.json`. Add, remove or edit entries in the `questions` array. Each question has this shape:
+Everything is configured in `src/data/questions.json`:
 
 ```json
 {
-  "id": 1,
-  "question": "What planet is known as a red planet?",
-  "options": ["Earth", "Mars", "Venus", "Mercury"],
-  "answer": "Mars"
+    "title": "JavaScript Basics",
+    "description": "10 questions to test your JS knowledge.",
+    "instructions": [
+        "This quiz has 10 multiple-choice questions.",
+        "Each question has exactly one correct answer."
+    ],
+    "questions": [
+        {
+            "id": 1,
+            "question": "What does typeof null return?",
+            "options": ["null", "object", "undefined", "number"],
+            "correctIndex": 1
+        }
+    ]
 }
 ```
 
-The `answer` value must exactly match one of the strings in `options`. The result screen picks up the new question count automatically.
+| Field | Description |
+| --- | --- |
+| `title` | Heading on the start screen |
+| `description` | Subheading on the start screen |
+| `instructions` | List of instructions shown on the start screen |
+| `questions[].id` | Unique number for each question. Keep these unique, because they are used as React keys |
+| `questions[].question` | The question text |
+| `questions[].options` | Array of answer choices |
+| `questions[].correctIndex` | **Zero-based index** of the correct option in `options` |
+
+Add, remove or edit entries in the `questions` array. The result screen picks up the new question count automatically.
+
+To change the time limit, update the `10` used for the timer in `QuizCardComponent.js`. If you do, also update the time limit mentioned in the `instructions` in `questions.json`.
 
 ## Building for Production
 
